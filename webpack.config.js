@@ -1,5 +1,7 @@
+const path = require("path")
 const miniCssExcteractPlugin = require('mini-css-extract-plugin');
-
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 let mode = 'development';
 let target = "web";
 if(process.env.NODE_ENV === 'production'){
@@ -12,11 +14,32 @@ if(process.env.NODE_ENV === 'production'){
 module.exports = {
     mode: mode,
     target: target,
+
+    output: {
+        path: path.resolve(__dirname,"dist"),
+        assetModuleFilename: "images/[hash][ext][query]"
+    },
+
     module: {
         rules: [
             {
-                test: /\.scss$/i,
-                use: [miniCssExcteractPlugin.loader, 
+                test: /\.(png|jpg|svg|webp)$/i,
+                type: "asset",
+                // parser: {
+                //     dataUrlCondition: {
+                //         maxSize: 30 * 1024,
+                //     }
+                // }
+            },
+            {
+                test: /\.(s[ac]|c)ss$/i,
+                use: [
+                    {
+                    loader: miniCssExcteractPlugin.loader, 
+                    options: {
+                        publicPath: " "
+                    }
+                    },
                     "css-loader", 
                     "postcss-loader", 
                     "sass-loader"
@@ -32,8 +55,13 @@ module.exports = {
         ],
     },
 
-    plugins: [new miniCssExcteractPlugin()],
-
+    plugins: [
+    new CleanWebpackPlugin(),
+    new miniCssExcteractPlugin(), 
+    new HtmlWebpackPlugin({
+        template: "./src/index.html"
+    }),
+        ],
     devtool: "source-map",
     devServer: {
         contentBase: "./dist",

@@ -3,6 +3,11 @@
 .body{
     margin: 0;
     background-color: variables.$bg;
+    background-image: url(../img/hero-img2-1920.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
     &__title{
         color: purple;
         font-size: 100px;
