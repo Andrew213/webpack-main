@@ -1,0 +1,26 @@
+@use "variables";
+// $bg: green;
+.body{
+    margin: 0;
+    background-color: variables.$bg;
+    &__title{
+        color: purple;
+        font-size: 100px;
+    }   
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &::placeholder{
+        color :read-only
+    }
+    &:focus{
+        outline: none;
+    }
+}
+
+button{
+    font-size: 1px;
+}
