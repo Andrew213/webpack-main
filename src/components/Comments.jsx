@@ -1,10 +1,6 @@
 import React from 'react';
-// import Comment from './comment/comment.jsx'
-
 
 const Comments = ({ comments, removeComment }) => {
-
-
 
     return comments.map(el => (
         <div key={el.id} className='comments'>
