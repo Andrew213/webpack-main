@@ -9,7 +9,7 @@ const App = (props) => {
 
   const addComment = comment => {
     if (/^\s*$/.test(comment.text) || /^\s*$/.test(comment.name)) {
-      alert('df')
+      return
     }
 
     localStorage.setItem('commentsBase', JSON.stringify(comments))
