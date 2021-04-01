@@ -1,25 +1,10 @@
-// $bg: green;
-.body{
-    margin: 0;
-    // background-image: url(../img/hero-img2-1920.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    &__title{
-        color: purple;
-        font-size: 100px;
-    }   
+body {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    &::placeholder{
-        color :read-only
-    }
-    &:focus{
-        outline: none;
-    }
+.app {
+    width: 1500px;
+    padding: 0 15px;
+    padding-top: 100px;
+    margin: auto;
 }
-

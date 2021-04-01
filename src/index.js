@@ -1,6 +1,16 @@
+
 import "./scss/style.scss"
 import "./index.html";
-import "./js/button.js"
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './js/App.jsx';
 
-let x = (a,b) => a*b;
-console.log(x(5,2))
+
+ReactDOM.render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>,
+    document.getElementById('root')
+)
+
+
