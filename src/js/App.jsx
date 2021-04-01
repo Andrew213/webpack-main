@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Comments from '../components/comments/Comments.jsx';
-import Form from '../components/form/Form.jsx';
+import Comments from '../components/Comments.jsx';
+import Form from '../components/Form.jsx';
 
 const date = new Date();
 
