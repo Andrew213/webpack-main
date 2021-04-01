@@ -2,17 +2,6 @@ import React, { useState } from 'react';
 import Comments from '../components/Comments.jsx';
 import Form from '../components/Form.jsx';
 
-const date = new Date();
-
-const comments = [
-  {
-    name: 'Georg',
-    text: "That's cool!!!",
-    time: date.toLocaleTimeString(),
-  },
-
-]
-
 const App = (props) => {
   const [comments, setComments] = useState(localStorage.getItem('commentsBase') ? JSON.parse(localStorage.getItem('commentsBase')) : []);
 
