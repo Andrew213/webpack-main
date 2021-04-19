@@ -1,8 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { deleteComment } from '../redux/actions';
 
-const Comments = ({ comments, removeComment }) => {
+const Comments = ({ stateComments, deleteComment }) => {
 
-    return comments.map(el => (
+    if (!stateComments.length) {
+        return <p className='comments__nocomments'>Нет комменариев</p>
+    }
+
+    const removeComment = id => {
+        // const removeArr = stateComments.filter(comment => comment.id !== id)
+        deleteComment(stateComments, id)
+    }
+
+    return stateComments.map(el => (
         <div key={el.id} className='comments'>
             <div className='comments__item'>
                 <strong className='comments__name'>{el.name}</strong>
@@ -18,5 +29,14 @@ const Comments = ({ comments, removeComment }) => {
     ))
 
 }
+const mapStateToProps = state => {
+    return {
+        stateComments: state.comments.comments
+    }
+}
 
-export default Comments
+const mapDispatchToProps = {
+    deleteComment,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Comments)

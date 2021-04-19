@@ -1,6 +1,9 @@
+import { nanoid } from 'nanoid';
 import React, { useState } from 'react';
+import { connect } from 'react-redux'
+import { createComment } from '../redux/actions';
 
-function Form({ onSubmit }) {
+function Form({ createComment }) {
     const [inputText, setInputText] = useState('')
     const [inputName, setInputName] = useState('')
 
@@ -14,13 +17,15 @@ function Form({ onSubmit }) {
 
     const handleSubmit = e => {
         e.preventDefault()
-        onSubmit({
-            id: Math.floor(Math.random() * 10000),
+        if (!inputText.trim() || !inputName.trim()) {
+            return
+        }
+        createComment({
+            id: nanoid(),
             text: inputText,
             name: inputName,
             time: new Date().toLocaleTimeString(),
-        });
-
+        })
         setInputText('')
         setInputName('')
     }
@@ -49,5 +54,8 @@ function Form({ onSubmit }) {
 
 }
 
+const mapDispatchToProps = {
+    createComment
+}
 
-export default Form
+export default connect(null, mapDispatchToProps)(Form)
